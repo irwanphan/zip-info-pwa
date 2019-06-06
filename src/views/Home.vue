@@ -9,19 +9,20 @@
     </ion-header>
 
     <ion-content class="ion-padding">
-      My App
+      <ZipSearch />
+
     </ion-content>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-
+import ZipSearch from '../components/ZipSearch'
 
 export default {
   name: 'home',
   components: {
-
+    ZipSearch
   }
 }
 </script>
