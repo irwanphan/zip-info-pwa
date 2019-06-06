@@ -1,12 +1,14 @@
 <template>
   <ion-grid>
-    <form>
+    <!-- call method onSubmit -->
+    <form @submit="onSubmit">
       <ion-col>
         <ion-item>
           <ion-label>
             Zipcode
           </ion-label>
-          <ion-input name="zip"></ion-input>
+          <!-- bind input to data {zip} -->
+          <ion-input :value="zip" @input="zip = $event.target.value" placeholder="enter US zipcode" name="zip"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col>
@@ -20,6 +22,17 @@
 
 <script>
 export default {
-  name: "ZipSearch"
+  name: "ZipSearch",
+  data() {
+    return {
+      zip: ""
+    }
+  },
+  methods: {
+    onSubmit(e) {
+      e.preventDefault()
+      console.log(this.zip)
+    }
+  },
 }
 </script>
