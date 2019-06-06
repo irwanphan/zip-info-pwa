@@ -31,7 +31,22 @@ export default {
   methods: {
     onSubmit(e) {
       e.preventDefault()
-      console.log(this.zip)
+      // console.log(this.zip)
+      // zip RegEx
+      const isValidZip = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test(this.zip)
+      // test for valid zip
+      if(!isValidZip) {
+        this.showAlert()
+      }
+    },
+    showAlert() {
+      return this.$ionic.alertController
+        .create({
+          header: "Enter Zipcode",
+          message: "enter a valid US zipcode",
+          buttons: ["OK"]
+        })
+        .then(a => a.present())
     }
   },
 }
