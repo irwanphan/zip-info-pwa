@@ -10,8 +10,9 @@
 
     <ion-content class="ion-padding">
       <!-- if run get-zip method -->
-      <ZipSearch v-on:get-zip="getZipInfo"/>
-
+      <ZipSearch v-on:get-zip="getZipInfo" />
+      <!-- show it here, bind info to info in the data -->
+      <ZipInfo v-bind:info="info" />
     </ion-content>
   </div>
 </template>
@@ -20,10 +21,20 @@
 // @ is an alias to /src
 import ZipSearch from '../components/ZipSearch'
 
+import ZipInfo from '../components/ZipInfo'
+
+
 export default {
   name: 'home',
   components: {
-    ZipSearch
+    ZipSearch,
+    ZipInfo
+  },
+  data() {
+    return {
+      // the retrieved json will be passed to var info
+      info: null
+    }
   },
   methods: {
     // getZipInfo(zip) {
@@ -37,9 +48,10 @@ export default {
         this.showAlert()
       }
       // get the json of the zipsearch
-      const info = await res.json()
+      // const info = await res.json()
+      this.info = await res.json()
       // see if it works
-      console.log(info)
+      // console.log(info)
     },
     showAlert() {
       return this.$ionic.alertController
