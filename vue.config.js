@@ -3,7 +3,6 @@ module.exports = {
     workboxPluginMode: 'GenerateSW',
     workboxOptions: {
       navigateFallback: '/index.html',
-      // specify cache
       runtimeCaching: [
         {
           urlPattern: new RegExp('^https://api.zippopotam.us/us/'),
