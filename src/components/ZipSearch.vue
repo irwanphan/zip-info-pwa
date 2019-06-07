@@ -37,6 +37,12 @@ export default {
       // test for valid zip
       if(!isValidZip) {
         this.showAlert()
+        // then clear the zip input
+        this.zip = ""
+      } else {
+        this.$emit("get-zip", this.zip)
+        // then clear the zip input
+        this.zip = ""
       }
     },
     showAlert() {
