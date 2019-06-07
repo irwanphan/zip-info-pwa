@@ -5,6 +5,7 @@ import router from './router'
 // import the ionic and its style
 import Ionic from '@ionic/vue'
 import '@ionic/core/css/ionic.bundle.css'
+import './registerServiceWorker'
 // then use the ionic on vue
 Vue.use(Ionic)
 
