@@ -13,6 +13,8 @@
       <ZipSearch v-on:get-zip="getZipInfo" />
       <!-- show it here, bind info to info in the data -->
       <ZipInfo v-bind:info="info" />
+      <!-- bind to info, on emitted clear info event call clearInfo method -->
+      <ClearInfo v-bind:info="info" v-on:clear-info="clearInfo" />
     </ion-content>
   </div>
 </template>
@@ -20,15 +22,16 @@
 <script>
 // @ is an alias to /src
 import ZipSearch from '../components/ZipSearch'
-
 import ZipInfo from '../components/ZipInfo'
 
+import ClearInfo from '../components/ClearInfo'
 
 export default {
   name: 'home',
   components: {
     ZipSearch,
-    ZipInfo
+    ZipInfo,
+    ClearInfo
   },
   data() {
     return {
@@ -61,6 +64,9 @@ export default {
           buttons: ["OK"]
         })
         .then(a => a.present())
+    },
+    clearInfo() {
+      this.info = null
     }
   }
 }
